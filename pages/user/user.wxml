@@ -47,7 +47,7 @@
 		
 		</view>
 		<view class="pd-15">
-			<button class="weui-btn" type="primary" bindtap="showMap">登录</button>
+			<button class="weui-btn" type="primary">登录</button>
 		</view>
 	</view>
 

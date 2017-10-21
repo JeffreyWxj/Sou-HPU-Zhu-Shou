@@ -16,14 +16,4 @@ Page({
 			}
 		});
 	},
-	showMap: function () {
-		wx.request({
-			url: 'http://localhost',
-			method: 'get',
-			data: {},
-			success: function (resp) {
-				console.log(resp);
-			}
-		});
-	}
 });
