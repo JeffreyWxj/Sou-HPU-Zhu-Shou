@@ -41,13 +41,13 @@
 					<input class="weui-input" />
 				</view>
 				<view class="weui-cell__ft">
-					<image class="weui-vcode-img" src="http://via.placeholder.com/108x50" style="width: 108px" bindtab="refreshCaptcha"></image>
+					<image class="weui-vcode-img" src="{{app.globalData.apiList.verify_img}}" style="width: 108px" bindtab="refreshCaptcha"></image>
 				</view>
 			</view>
 		
 		</view>
 		<view class="pd-15">
-			<button class="weui-btn" type="primary">登录</button>
+			<button class="weui-btn" type="primary" bindtap="login">登录</button>
 		</view>
 	</view>
 
