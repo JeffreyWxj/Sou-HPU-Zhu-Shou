@@ -1,32 +1,45 @@
 {
-  "pages": [
-    "pages/user/user",
-    "pages/schedule/schedule"
-  ],
-  "window": {
-    "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#393a3f",
-    "navigationBarTitleText": "嗖HPU助手",
-    "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true
-  },
-  "tabBar": {
-    "color": "#888888",
-    "selectedColor": "#ffffff",
-    "backgroundColor": "#393a3f",
-    "borderStyle": "white",
-    "list": [{
-        "pagePath": "pages/schedule/schedule",
-        "text": "课程表",
-        "iconPath": "static/images/table_icon_grey.png",
-        "selectedIconPath": "static/images/table_icon.png"
-      },
-      {
-        "pagePath": "pages/user/user",
-        "text": "个人中心",
-        "iconPath": "static/images/user_icon_grey.png",
-        "selectedIconPath": "static/images/user_icon.png"
-      }
-    ]
-  }
+	"pages": [
+		"pages/user/user",
+		"pages/schedule/schedule"
+	],
+	"window": {
+		"backgroundTextStyle": "dark",
+		"navigationBarBackgroundColor": "#393a3f",
+		"navigationBarTitleText": "嗖HPU助手",
+		"navigationBarTextStyle": "white",
+		"enablePullDownRefresh": true
+	},
+	"tabBar": {
+		"color": "#888888",
+		"selectedColor": "#ffffff",
+		"backgroundColor": "#393a3f",
+		"borderStyle": "white",
+		"list": [
+			{
+				"pagePath": "pages/schedule/schedule",
+				"text": "小嗖资讯",
+				"iconPath": "static/images/table_icon_grey.png",
+				"selectedIconPath": "static/images/table_icon.png"
+			},
+			{
+				"pagePath": "pages/schedule/schedule",
+				"text": "我的课表",
+				"iconPath": "static/images/table_icon_grey.png",
+				"selectedIconPath": "static/images/table_icon.png"
+			},
+			{
+				"pagePath": "pages/schedule/schedule",
+				"text": "成绩查询",
+				"iconPath": "static/images/table_icon_grey.png",
+				"selectedIconPath": "static/images/table_icon.png"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"text": "个人中心",
+				"iconPath": "static/images/user_icon_grey.png",
+				"selectedIconPath": "static/images/user_icon.png"
+			}
+		]
+	}
 }
