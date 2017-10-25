@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="page">
-	<view>
+	<view wx:if="{{!stuid}}">
 		<view class="userinfo">
 			<image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" wx:if="{{userInfo.avatarUrl}}" alt="avatar" />
 			<text class="userinfo-nickname">{{userInfo.nickName}}</text>
@@ -20,7 +20,7 @@
 					<view class="weui-label">学号</view>
 				</view>
 				<view class="weui-cell__bd">
-					<input class="weui-input" />
+					<input class="weui-input" bindinput="formInput" data-name="stuid" />
 				</view>
 			</view>
 			
@@ -29,7 +29,7 @@
 					<view class="weui-label">密码</view>
 				</view>
 				<view class="weui-cell__bd">
-					<input class="weui-input" />
+					<input class="weui-input" bindinput="formInput" data-name="password" password="true" />
 				</view>
 			</view>
 			
@@ -38,16 +38,44 @@
 					<view class="weui-label">验证码</view>
 				</view>
 				<view class="weui-cell__bd">
-					<input class="weui-input" />
+					<input class="weui-input" bindinput="formInput" data-name="verify_code" value="{{formData.verify_code}}" />
 				</view>
 				<view class="weui-cell__ft">
-					<image class="weui-vcode-img" src="{{app.globalData.apiList.verify_img}}" style="width: 108px" bindtab="refreshCaptcha"></image>
+					<image class="weui-vcode-img" src="{{verify_img}}" style="width: 108px" bindtap="refreshCaptcha"></image>
 				</view>
 			</view>
 		
 		</view>
 		<view class="pd-15">
-			<button class="weui-btn" type="primary" bindtap="login">登录</button>
+			<button class="btn-primary" bindtap="login">登录</button>
+		</view>
+	</view>
+	<view wx:if="{{stuid}}">
+		<view class="userinfo">
+			<image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" wx:if="{{userInfo.avatarUrl}}" alt="avatar" />
+			<text class="userinfo-nickname">{{userInfo.nickName}}</text>
+		</view>
+		<view class="weui-panel">
+			<view class="weui-panel__hd">用户信息</view>
+			<view class="weui-panel__bd">
+				<view class="weui-media-box">
+					<text>学号：</text>
+					<text>{{stuid}}</text>
+				</view>
+				<view class="weui-media-box">
+					<text>姓名：</text>
+					<text>{{stuInfo.stu_name}}</text>
+				</view>
+				<view class="weui-media-box">
+					<text>专业信息：</text>
+					<text>{{stuInfo.xi_suo}} </text>
+					<text>{{stuInfo.zhuan_ye}} </text>
+					<text>{{stuInfo.ban_ji}} </text>
+				</view>
+			</view>
+		</view>
+		<view class="mgt-15 pd-5">
+			<button class="btn-primary" bindtap="logout">退出登录</button>
 		</view>
 	</view>
 

@@ -1,14 +1,19 @@
 // 域名和API预处理
 const domain = 'http://127.0.0.1:8000';
 let apiList = {
+	// 根据js_code换取openid接口
+	'js_code_to_openid': '/api/wxapi/js-code-to-openid',
 	//验证码地址
 	'verify_img': '/api/spider/verify-img',
-	// 根据js_code换取openid接口
-	'js_code_to_openid': '/api/wxapi/js-code-to-openid'
+	// 模拟登录教务系统
+	'login_jiaowu': '/api/student/login',
+	// 获取学生教务系统数据
+	'student_info': '/api/student/student-info'
 };
 for (let apiName in apiList) {
 	apiList[apiName] = domain + apiList[apiName];
 }
+apiList['verify_img_default'] = 'http://via.placeholder.com/108x44?text=Loading';
 // 小程序对象
 App({
 	//小程序启动钩子
@@ -16,43 +21,40 @@ App({
 		let that = this;
 		that.globalData.domain = domain;
 		that.globalData.apiList = apiList;
-		that.login();
+		console.log(1);
 	},
-	login: function () {
-		let that = this;
-		wx.login({
-			success: function (res) {
-				if (res.code) {	//取出的结果存在code字段,表示登录成功
-					that.globalData.code = res.code;	//取出code字段并存储
-					that.requestOpenId();
-				} else {	//登录接口出现异常,没有code
-					console.log(res, 'app.js login success but dont have code');
-				}
-			},
-			fail: function () {	//登录失败
-				console.log(res, 'app.js login fail');
-			},
-			complete: function () {
-			}
-		});
-	},
-	requestOpenId: function () {
+	runWithOpenid: function (myFunc) {
 		let that = this;
 		const openid = wx.getStorageSync('openid', false);
-		if (!openid) {
-			wx.request({
-				url: that.globalData.apiList['js_code_to_openid'],
-				method: 'GET',
-				data: {js_code: that.globalData.code},
-				success: function (resp) {
-					console.log(resp, 'openid');
-					wx.setStorageSync('openid', resp.data.data.openid);
+		if (openid) {
+			myFunc(openid);
+		} else {
+			wx.login({
+				success: function (res) {
+					if (res.code) {
+						const js_code = res.code;
+						wx.request({
+							url: that.globalData.apiList['js_code_to_openid'],
+							method: 'GET',
+							data: {js_code: js_code},
+							success: function (resp) {
+								const openid = resp.data.data.openid;
+								wx.setStorage({
+									key: 'openid',
+									data: openid
+								});
+								myFunc(openid);
+							}
+						});
+					} else {
+						console.log('login成功但是没有code');
+					}
+				},
+				fail: function () {	//登录失败
+					console.log('login失败');
 				}
 			});
 		}
-	},
-	getOpenId: function () {
-		return wx.getStorageSync('openid', false);
 	},
 	/**
 	 * 重新申请授权
@@ -70,12 +72,7 @@ App({
 							wx.openSetting({
 								success: function (res) {
 									if (res.authSetting['scope.userInfo']) {
-										const pages = getCurrentPages();
-										const currentPageUrl = pages[pages.length - 1]['route'];
-										console.log(currentPageUrl);
-										wx.reLaunch({
-											url: '/' + currentPageUrl
-										});
+										that.reloadCurrentPage();
 									} else {
 										that.resetAuth();
 									}
@@ -85,6 +82,49 @@ App({
 					});
 				}
 			}
+		});
+	},
+	reloadCurrentPage: function () {
+		const pages = getCurrentPages();
+		const currentPageUrl = pages[pages.length - 1]['route'];
+		console.log(currentPageUrl);
+		wx.reLaunch({
+			url: '/' + currentPageUrl
+		});
+	},
+	loadRequest: function (obj) {
+		wx.showLoading({
+			title: '加载中...',
+			mask: 1
+		});
+		let oldComplete = obj.complete;
+		obj.complete = function () {
+			wx.hideLoading();
+			if (oldComplete) {
+				oldComplete();
+			}
+		};
+		wx.request(obj);
+	},
+	getStuInfo: function (stuid,callback) {
+		let that = this;
+		that.runWithOpenid(function (openid) {
+			that.loadRequest({
+				url: that.globalData.apiList.student_info,
+				method: 'GET',
+				data: {openid: openid, stuid: stuid},
+				success: function (resp) {
+					if (resp.data.status == 'success') {
+						console.log(resp.data);
+						callback(resp.data.data);
+					} else {
+						wx.showModal({
+							title: '出错啦~',
+							content: resp.data.msg
+						});
+					}
+				}
+			});
 		});
 	},
 	globalData: {

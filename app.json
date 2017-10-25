@@ -5,40 +5,40 @@
 	],
 	"window": {
 		"backgroundTextStyle": "dark",
-		"navigationBarBackgroundColor": "#393a3f",
+		"navigationBarBackgroundColor": "#ffac34",
 		"navigationBarTitleText": "嗖HPU助手",
 		"navigationBarTextStyle": "white",
 		"enablePullDownRefresh": true
 	},
 	"tabBar": {
-		"color": "#888888",
-		"selectedColor": "#ffffff",
-		"backgroundColor": "#393a3f",
+		"color": "#999999",
+		"selectedColor": "#ffac34",
+		"backgroundColor": "#ffffff",
 		"borderStyle": "white",
 		"list": [
 			{
 				"pagePath": "pages/schedule/schedule",
 				"text": "小嗖资讯",
-				"iconPath": "static/images/table_icon_grey.png",
-				"selectedIconPath": "static/images/table_icon.png"
+				"iconPath": "static/images/news.png",
+				"selectedIconPath": "static/images/news-s.png"
 			},
 			{
 				"pagePath": "pages/schedule/schedule",
 				"text": "我的课表",
-				"iconPath": "static/images/table_icon_grey.png",
-				"selectedIconPath": "static/images/table_icon.png"
+				"iconPath": "static/images/table.png",
+				"selectedIconPath": "static/images/table-s.png"
 			},
 			{
 				"pagePath": "pages/schedule/schedule",
 				"text": "成绩查询",
-				"iconPath": "static/images/table_icon_grey.png",
-				"selectedIconPath": "static/images/table_icon.png"
+				"iconPath": "static/images/score.png",
+				"selectedIconPath": "static/images/score-s.png"
 			},
 			{
 				"pagePath": "pages/user/user",
 				"text": "个人中心",
-				"iconPath": "static/images/user_icon_grey.png",
-				"selectedIconPath": "static/images/user_icon.png"
+				"iconPath": "static/images/user.png",
+				"selectedIconPath": "static/images/user-s.png"
 			}
 		]
 	}
