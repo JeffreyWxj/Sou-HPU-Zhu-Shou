@@ -62,10 +62,6 @@ Page({
 							title: '啊哈！出错啦~ >_<',
 							content: resp.data.msg,
 							success: function () {
-								formData.verify_code = null;
-								that.setData({
-									formData: formData
-								});
 								that.refreshCaptcha();
 							}
 						});
@@ -97,9 +93,11 @@ Page({
 				method: 'GET',
 				data: {openid: openid},
 				success: function (resp) {
-					console.log(resp);
 					const verify_img_b64 = 'data:image/jpeg;base64,' + resp.data.data.img;
+					let formData=that.data.formData;
+					formData.verify_code = null;
 					that.setData({
+						formData: formData,
 						verify_img: verify_img_b64
 					});
 				}
