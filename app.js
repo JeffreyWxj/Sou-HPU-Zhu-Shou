@@ -1,5 +1,6 @@
 // 域名和API预处理
-const domain = 'http://127.0.0.1:8000';
+//const domain = 'http://127.0.0.1:8000';
+const domain = 'https://ssl.snowboy99.com';
 let apiList = {
 	// 根据js_code换取openid接口
 	'js_code_to_openid': '/api/wxapi/js-code-to-openid',

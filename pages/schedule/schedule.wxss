@@ -1,0 +1,94 @@
+.active {
+	background: rgba(255, 172, 52, 0.3);
+}
+
+.gray {
+	background: rgba(153, 153, 153, 0.3);
+}
+
+.primary {
+	border: 1px dotted #999999;
+	background: #ffffff;
+}
+
+.nav {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.nav-item {
+	text-align: center;
+	flex-grow: 1;
+	background: #ffffff;
+	border-bottom: 3px solid #999999;
+	padding: 5px 0;
+}
+
+.nav-active {
+	border-bottom: 3px solid #ffac34;
+}
+
+.none {
+	background: none;
+}
+
+/*课表样式*/
+.text-v {
+	-webkit-writing-mode: vertical-rl;
+}
+
+.line {
+	display: flex;
+	align-items: stretch;
+	border-bottom: 1px solid #cccccc;
+}
+
+.day-view .line:last-child {
+	border-bottom: none;
+}
+
+.day-view .tl {
+	padding: 10px;
+	background: #eeeeee;
+	color: #999999;
+}
+
+.day-view .td {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex-grow: 1;
+	padding: 5px;
+	background: rgba(255, 172, 52, 0.2);
+}
+
+.day-view .td > view {
+}
+
+.no-bg {
+	background: none !important;
+}
+.text-desc{
+	font-size: smaller;
+	color: #999999;
+}
+.week-view .th{
+	width: 14%;
+	background: #eeeeee;
+	color: #999999;
+	display:flex;
+	align-items:center;
+}
+.week-view .line .course-cell{
+	width: 14%;
+	border-right: 1px solid #cccccc;
+}
+.week-view .line .course-cell:last-child{
+	border-right: none;
+}
+.week-view .tl {
+	padding: 10px;
+	background: #eeeeee;
+	color: #999999;
+}

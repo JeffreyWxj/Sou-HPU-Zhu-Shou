@@ -1,14 +1,14 @@
 {
 	"pages": [
-		"pages/user/user",
-		"pages/schedule/schedule"
+		"pages/schedule/schedule",
+		"pages/user/user"
 	],
 	"window": {
 		"backgroundTextStyle": "dark",
 		"navigationBarBackgroundColor": "#ffac34",
 		"navigationBarTitleText": "嗖HPU助手",
 		"navigationBarTextStyle": "white",
-		"enablePullDownRefresh": true
+		"enablePullDownRefresh": false
 	},
 	"tabBar": {
 		"color": "#999999",

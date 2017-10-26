@@ -1,0 +1,105 @@
+<view>
+  <!--未登录-->
+  <view wx:if="{{!stuid}}">
+    <view class="weui-panel">
+      <view class="weui-panel__hd">
+        提示
+      </view>
+      <view class="pd-15">
+        请登录您的教务系统账号
+      </view>
+    </view>
+    <view class="pd-5 mgt-20">
+      <navigator url="/pages/user/user" open-type="switchTab">
+        <button class="btn-primary">立即登录</button>
+      </navigator>
+    </view>
+  </view>
+  <!--已登录-->
+  <view wx:if="{{stuid}}">
+    <!--导航-->
+    <view>
+      <scroll-view scroll-x="{{true}}">
+        <view class="nav">
+          <view class="nav-item {{(tab==1)?'nav-active':''}}" data-tab="1" bindtap="changeTab">
+            今日课表
+          </view>
+          <view class="nav-item {{(tab==2)?'nav-active':''}}" data-tab="2" bindtap="changeTab">
+            本周课表
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <!--/导航-->
+    <!--当日课表-->
+    <view wx:if="{{tab==1}}">
+      <!--选择器-->
+      <view class="mgt-15 weui-cells">
+        <picker mode="multiSelector" range="{{timeRange}}" value="multiIndex" bindchange="selectWeekDay">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">选择时间</view>
+            <view class="weui-cell__ft">{{timeRange[0][week-1]}} {{timeRange[1][day-1]}}</view>
+          </view>
+        </picker>
+      </view>
+      <!--课程显示-->
+      <view class="mgt-15 day-view">
+        <view class="line" wx:for="{{sectionMap}}" wx:for-index="idx" wx:for-item="item">
+          <view class="text-v tl">
+            <text>第{{item}}大节</text>
+          </view>
+          <view class="td" wx:if="{{stuInfo.schedule_parsed[week][day][idx]}}">
+            <view class="">{{stuInfo.schedule_parsed[week][day][idx]['课程名']}}</view>
+            <view>{{stuInfo.schedule_parsed[week][day][idx]['教师']}}</view>
+            <view>{{stuInfo.schedule_parsed[week][day][idx]['教学楼']}}</view>
+          </view>
+          <view class="td no-bg" wx:if="{{!stuInfo.schedule_parsed[week][day][idx]}}"></view>
+        </view>
+      </view>
+    </view>
+    <!--/当日课表-->
+    <!--本周课表-->
+    <view wx:if="{{tab==2}}">
+      <!--选择器-->
+      <view class="weui-cells">
+        <picker mode="selector" range="{{timeRange[0]}}" value="multiIndex" bindchange="selectWeek">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">选择时间</view>
+            <view class="weui-cell__ft">{{timeRange[0][week-1]}}</view>
+          </view>
+        </picker>
+      </view>
+      <!--课程显示-->
+      <view class="mgt-15 week-view">
+        <view class="line">
+          <view class="text-v tl">
+            <text decode="{{true}}">&emsp;</text>
+          </view>
+          <block wx:for="{{dayMap}}" wx:for-index="day_idx" wx:for-item="day_item">
+            <view class="th">
+              <text>星期{{day_item}}</text>
+            </view>
+          </block>
+        </view>
+        <block wx:for="{{sectionMap}}" wx:for-index="sec_idx" wx:for-item="section_item">
+          <view class="line">
+            <view class="text-v tl">第{{section_item}}大节</view>
+            <block wx:for="{{dayMap}}" wx:for-index="day_idx" wx:for-item="day_item">
+              <view class="course-cell">
+                <view class="" wx:if="{{stuInfo.schedule_parsed[week][day_idx][sec_idx]}}">
+                  <view class="">{{stuInfo.schedule_parsed[week][day_idx][sec_idx]['课程名']}}</view>
+                  <view class="">
+                    <view class="text-desc">{{stuInfo.schedule_parsed[week][day_idx][sec_idx]['教师']}}</view>
+                    <view class="text-desc">{{stuInfo.schedule_parsed[week][day_idx][sec_idx]['教学楼']}}</view>
+                  </view>
+                </view>
+                <view class="" wx:if="{{!stuInfo.schedule_parsed[week][day_idx][sec_idx]}}"></view>
+              </view>
+            </block>
+          </view>
+        </block>
+      </view>
+    </view>
+    <!--/本周课表-->
+  </view>
+</view>
