@@ -81,8 +81,11 @@
 	align-items:center;
 }
 .week-view .line .course-cell{
+	padding: 2px;
 	width: 14%;
 	border-right: 1px solid #cccccc;
+	word-break: break-all;
+	text-align: center;
 }
 .week-view .line .course-cell:last-child{
 	border-right: none;
@@ -91,4 +94,7 @@
 	padding: 10px;
 	background: #eeeeee;
 	color: #999999;
+}
+.week-view .course-name{
+	font-size: smaller;
 }

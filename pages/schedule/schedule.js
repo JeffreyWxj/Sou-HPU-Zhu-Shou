@@ -18,6 +18,9 @@ Page({
     tab: 1
   },
   onLoad: function () {
+  
+  },
+  onShow: function () {
     let that = this;
     const stuid = wx.getStorageSync('stuid');
     that.setData({
@@ -68,13 +71,7 @@ Page({
     const week = parseInt(e.detail.value);
     this.changeDay(week + 1);
   },
-  onShow: function () {
-    let that = this;
-    const stuid = wx.getStorageSync('stuid');
-    that.setData({
-      stuid: stuid
-    });
-  },
+  
   changeTab: function (e) {
     this.setData({
       tab: e.target.dataset.tab

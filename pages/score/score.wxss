@@ -1,0 +1,41 @@
+.score-table {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+.score-item {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 15px;
+	font-size: smaller;
+}
+
+.th {
+	color: #999999;
+	border-bottom: 2px solid #999999;
+}
+
+.score-item>view:nth-child(1) {
+	width: 50%;
+}
+.score-item>view:nth-child(2) {
+	width: 15%;
+}
+.score-item>view:nth-child(3) {
+	width: 15%;
+}
+.score-item>view:nth-child(4) {
+	width: 10%;
+}
+.score-item>view:nth-child(5) {
+	width: 10%;
+}
+.item-ext{
+	text-align: center;
+}
+.text-desc{
+	color: #999;
+}

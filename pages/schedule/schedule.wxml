@@ -87,7 +87,7 @@
             <block wx:for="{{dayMap}}" wx:for-index="day_idx" wx:for-item="day_item">
               <view class="course-cell">
                 <view class="" wx:if="{{stuInfo.schedule_parsed[week][day_idx][sec_idx]}}">
-                  <view class="">{{stuInfo.schedule_parsed[week][day_idx][sec_idx]['课程名']}}</view>
+                  <view class="course-name">{{stuInfo.schedule_parsed[week][day_idx][sec_idx]['课程名']}}</view>
                   <view class="">
                     <view class="text-desc">{{stuInfo.schedule_parsed[week][day_idx][sec_idx]['教师']}}</view>
                     <view class="text-desc">{{stuInfo.schedule_parsed[week][day_idx][sec_idx]['教学楼']}}</view>

@@ -1,0 +1,44 @@
+<view class="page">
+  <view class="score">
+    <view class="weui-cells">
+      <view class="weui-cell score-table">
+        <view class="score-item th">
+          <view class="item-name">
+            课程名
+          </view>
+          <view class="item-ext">
+            成绩
+          </view>
+          <view class="item-ext text-desc">
+            名次
+          </view>
+          <view class="item-ext text-desc">
+            最高分
+          </view>
+          <view class="item-ext text-desc">
+            最低分
+          </view>
+        </view>
+        <block wx:for="{{stuInfo.score_parsed}}" wx:for-item="item">
+          <view class="score-item">
+            <view class="item-name">
+              {{item['课程名']}}
+            </view>
+            <view class="item-ext">
+              {{item['成绩']}}
+            </view>
+            <view class="item-ext text-desc">
+              {{item['名次']}}
+            </view>
+            <view class="item-ext text-desc">
+              {{item['最高分']}}
+            </view>
+            <view class="item-ext text-desc">
+              {{item['最低分']}}
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

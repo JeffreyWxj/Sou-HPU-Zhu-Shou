@@ -1,7 +1,9 @@
 {
 	"pages": [
+		"pages/score/score",
 		"pages/schedule/schedule",
-		"pages/user/user"
+		"pages/user/user",
+		"pages/index/index"
 	],
 	"window": {
 		"backgroundTextStyle": "dark",
@@ -17,7 +19,7 @@
 		"borderStyle": "white",
 		"list": [
 			{
-				"pagePath": "pages/schedule/schedule",
+				"pagePath": "pages/index/index",
 				"text": "小嗖资讯",
 				"iconPath": "static/images/news.png",
 				"selectedIconPath": "static/images/news-s.png"
@@ -29,7 +31,7 @@
 				"selectedIconPath": "static/images/table-s.png"
 			},
 			{
-				"pagePath": "pages/schedule/schedule",
+				"pagePath": "pages/score/score",
 				"text": "成绩查询",
 				"iconPath": "static/images/score.png",
 				"selectedIconPath": "static/images/score-s.png"
